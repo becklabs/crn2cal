@@ -6,7 +6,7 @@ import CRN from './CRN';
 function CRNList({ crns, setCrns }) {
   return (
     <div className="crn-container">
-      <ul className="fa-ul">
+      <ul className="list-group">
         {crns.map((crn) => (
           <CRN
             crn={crn}

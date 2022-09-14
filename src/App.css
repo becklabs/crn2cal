@@ -1,0 +1,36 @@
+.child {
+  display: inline-block;
+  vertical-align: top;
+  padding: 1rem 1rem;
+}
+
+
+#root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* vertical-align: top; */
+}
+
+
+
+.footer {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+}
+
+/* Title centered at the top of the page with some padding at the top*/
+.title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+}

@@ -1,10 +1,8 @@
-//import nextId from "react-id-generator";
 import axios from "axios";
-//import moment from "moment-timezone";
-
 import {toICSEvents} from "./data/events";
 import { buildClassPayload, class_headers } from "./data/classes";
 import { validCRN } from "./data/crn";
+
 
 // Form where you can enter a crn and it submits when you press enter
 
@@ -35,29 +33,38 @@ function CRNForm({ crn, setCrn, crns, setCrns, termid}) {
                 }
               }
               return crn_obj;
-            });
+            }).filter((crn_obj) => crn_obj.status != "failure");
+          // filter crns that failed
           });    
         }).catch((error) => {
-          console.log(error);
+          setCrns((state) => {
+            return state.filter((crn_obj) => crn_obj.crn != crn);
+          });
         });
       setCrn("");
     }
   }
 
   function handleChange(event) {
+    // ensure that the input is all numbers and less than or equal to 5 digits
+    if (event.target.value.match(/^[0-9]{0,5}$/)) {
     setCrn(event.target.value);
+    }
   }
 
   return (
+    <div className="crn-form">
     <form onSubmit={handleSubmit}>
       <input
+        className="form-control"
         type="text"
-        placeholder="Enter a CRN"
+        placeholder="Enter CRNs"
         value={crn}
         onChange={handleChange}
       />
-      <button type="submit">Add</button>
+      <div type="submit" ></div>
     </form>
+    </div>
   );
 }
 
