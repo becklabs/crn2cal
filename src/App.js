@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+// Import components
+import CRNForm from './components/CRNForm';
+import CRNList from './components/CRNList';
+import TermSelect from './components/TermSelect';
+import DownloadButton from './components/DownloadButton';
+ 
+const App = () => {
+  const [crn, setCrn] = React.useState("");
+  const [crns, setCrns] = React.useState([]);
+  const [termID, setTermID] = React.useState("");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        CRN to Calendar for NEU
+      </div>
+      <TermSelect
+        termID={termID}
+        setTermID={setTermID}
+        setCrns = {setCrns}/>
+      <CRNForm
+        crn = {crn}
+        setCrn = {setCrn}
+        crns = {crns}
+        setCrns = {setCrns}
+        termID = {termID}/>
+      <CRNList
+        crns = {crns}
+        setCrns = {setCrns} />
+      <DownloadButton crns = {crns} setCrns = {setCrns} termID = {termID}/>
     </div>
   );
 }

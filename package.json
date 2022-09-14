@@ -1,14 +1,27 @@
 {
-  "name": "neu-calendar",
+  "name": "crn2cal",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.2.0",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.27.2",
+    "file-saver": "^2.0.5",
+    "fs": "^0.0.1-security",
+    "fs-web": "^1.0.1",
+    "ics": "^2.40.0",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.37",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-id-generator": "^3.0.2",
     "react-scripts": "5.0.1",
+    "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
