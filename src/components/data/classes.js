@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const class_headers = {
   'content-type': 'application/json',
   //'Accept': '*/*',
@@ -14,4 +16,16 @@ export const buildClassPayload = (crn, termId) => {
     },
     "operationName": "searchResults"};
 }
+
+export const getClassInfo = async (crn, termId) => {
+  const response = await axios.post("https://api.searchneu.com/", buildClassPayload(crn, termId), { headers: class_headers });
+  const items = response.data.data.search.nodes;
+  return items[0];
+}
+
+
+
+
+
+
 

@@ -1,8 +1,5 @@
 import React from 'react';
 
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-//import { library } from "@fortawesome/fontawesome-svg-core";
-//import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import {X} from 'react-bootstrap-icons';
 
 import "./style/components.css";
@@ -21,7 +18,7 @@ function CRN({crn, setCrns, crns}) {
 
   return (
     <div className="rounded">
-      <li className="list-group-item d-flex justify-content-between align-items-center">
+      <li className="list-group-item d-flex justify-content-between align-items-center" >
       <div>
         {crn.crn}
       <button className="delete-btn" onClick = {handleDelete}> <X/></button>

@@ -5,11 +5,15 @@ import CRNForm from './components/CRNForm';
 import CRNList from './components/CRNList';
 import TermSelect from './components/TermSelect';
 import DownloadButton from './components/DownloadButton';
- 
+import UploadSchedule from './components/UploadSchedule';
+import Spinner from './components/Spinner';
+
 const App = () => {
   const [crn, setCrn] = React.useState("");
   const [crns, setCrns] = React.useState([]);
   const [termID, setTermID] = React.useState("");
+  const [termInfo, setTermInfo] = React.useState([]);
+
   return (
     <div className="App">
       <h1 className="title">
@@ -17,13 +21,30 @@ const App = () => {
       </h1>
       <div className="parent">
       <div className="child">
+        <div>
+        <UploadSchedule
+        crns={crns}
+        setCrns={setCrns}
+        setTermID = {setTermID}
+        termID = {termID}
+        termInfo = {termInfo} />
+         your <a className="link-dark" href="https://prod-web.neu.edu/wasapp/bn/AdmittedCourseSchedule/secure/index.jsp" target="_blank" rel="noreferrer">Schedule</a>
+        </div>
+        <div>
+        (right-click then save-as)
+        </div>
+      </div>
+      <div className="child">
+      <b>or</b>
+      </div>
+      <div className="child">
       <TermSelect
         termID={termID}
         setTermID={setTermID}
-        setCrns = {setCrns}/>
-      </div>
-
-      <div className="child">
+        setCrns = {setCrns}
+        termInfo = {termInfo}
+        setTermInfo = {setTermInfo}
+        />
       <CRNForm
         crn = {crn}
         setCrn = {setCrn}

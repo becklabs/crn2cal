@@ -1,7 +1,5 @@
 import React from 'react';
 import CRN from './CRN';
-// import fa-ul from font awesome
-
 
 function CRNList({ crns, setCrns }) {
   return (
