@@ -4,6 +4,10 @@
   padding: 1rem 1rem;
 }
 
+.wrapped {
+  inline-size: 150px;
+}
+
 
 #root {
   height: 100%;

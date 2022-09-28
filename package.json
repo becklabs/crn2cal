@@ -17,6 +17,7 @@
     "file-saver": "^2.0.5",
     "fs": "^0.0.1-security",
     "fs-web": "^1.0.1",
+    "html-table-to-json": "^1.0.0",
     "ics": "^2.40.0",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.37",

@@ -1,24 +1,18 @@
 import React from 'react';
-import {termID_headers, termID_payload} from "./data/terms";
-import axios from 'axios';
+import getTermInfo from "./data/terms";
 
 // Select a term from a dropdown list
 
-const TermSelect = ({termID, setTermID, setCrns}) => {
-  const [termInfo, setTermInfo] = React.useState([]);
-  
-  React.useEffect(() => {
-    const inner = () => {
-      axios.post("https://api.searchneu.com/", termID_payload, { headers: termID_headers })
-      .then((response) => {
-        const items = response.data.data.termInfos;
-        setTermInfo(items);
-        setTermID(items[0].termId);
-      }).catch((error) => {
-        console.log(error);
-      });
-      }
-    inner();
+const TermSelect = ({termID, setTermID, setCrns, termInfo, setTermInfo}) => {
+  React.useEffect(() => {const inner = () => {
+    getTermInfo().then((termInfo) => {
+      setTermInfo(termInfo);
+      setTermID(termInfo[0].termId);
+    }).catch((err) => {
+      console.log(err);
+    });
+  };
+  inner();
   }, []);
 
   const handleChange = (e) => {
@@ -43,25 +37,6 @@ const TermSelect = ({termID, setTermID, setCrns}) => {
       </select>
     </div>
   );
-
-  /*
-  return (
-    <div className="term-select">
-      <select
-        className="term-select"
-        name="term"
-        value={termID}
-        onChange={handleChange}
-      >
-        {termInfo.map((term) => (
-          <option key={term.termId} value={term.termId}>
-            {term.text}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-  */
 }
 
 export default TermSelect;
