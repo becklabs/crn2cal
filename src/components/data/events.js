@@ -24,6 +24,16 @@ export const toICSEvents = (json, crn) => {
 
   const name = json["name"];
 
+  let description;
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(json["desc"], 'text/html');
+    description = doc.body.textContent.trim();
+  } catch (error) {
+    console.warn("Failed to parse description:", error);
+    description = json["desc"] || "";
+  }
+
   const section_info = sections[0];
 
   // Convert each meeting to an event
@@ -45,6 +55,7 @@ export const toICSEvents = (json, crn) => {
     const event = {
       uid: nextId(),
       title: name,
+      description: description,
       location: location,
       start: first_start.format('YYYY-M-D-H-m').split("-").map((x) => parseInt(x)),
       startOutputType:"local",
